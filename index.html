@@ -35,21 +35,16 @@
 
 <script>
 (function(){
-  function detectadblock(addclass) {
     var adblock = false;
     var test = document.createElement('div');
     test.innerHTML = 'x';
     test.className = 'adsbox';
     document.body.appendChild(test);
-    console.log(test.offsetHeight);
     adblock = test.offsetHeight === 0;
-    console.log(adblock);
-    if (adblock && addclass) {
+    if (adblock) {
       document.body.classList.add('adblock');
     }
-//    test.remove();
-  }
-  detectadblock(true);
+    test.remove();
 })();
 </script>
 </body>
