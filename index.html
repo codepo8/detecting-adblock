@@ -41,6 +41,7 @@
     test.innerHTML = 'x';
     test.className = 'adsbox';
     document.body.appendChild(test);
+    console.log(test.offsetHeight);
     adblock = test.offsetHeight === 0;
     console.log(adblock);
     if (adblock && addclass) {
