@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Detecting Adblock (inline)</title>
+  <style type="text/css">
+    body {
+      background: #f8f8f8;
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      font-weight: lighter;
+      color: #333;
+      padding: 2em;
+    }
+    .notblocked {
+      display: block;
+    }
+    .blocked {
+      display: none;
+    }
+    .adblock .notblocked {
+      display: none;
+    }
+    .adblock .blocked {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<h1>Detecting AdBlock</h1>
+
+<p class="notblocked">AdBlock is not installed</p>
+
+<p class="blocked">AdBlock is installed</p>
+
+<script>
+(function(){
+  function detectadblock(addclass) {
+    var adblock = false;
+    var test = document.createElement('div');
+    test.innerHTML = 'x';
+    test.className = 'adsbox';
+    document.body.appendChild(test);
+    adblock = test.offsetHeight === 0;
+    if (adblock && addclass) {
+      document.body.classList.add('adblock');
+    }
+    test.remove();
+  }
+  detectadblock(true);
+})();
+</script>
+</body>
+</html>
