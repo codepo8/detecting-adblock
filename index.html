@@ -40,11 +40,15 @@
     test.innerHTML = 'x';
     test.className = 'adsbox';
     document.body.appendChild(test);
+    window.setTimeout(function(){
+
     adblock = test.offsetHeight === 0;
+    console.log(adblock);
     if (adblock) {
       document.body.classList.add('adblock');
     }
     test.remove();
+    },200);
 })();
 </script>
 </body>
