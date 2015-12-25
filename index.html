@@ -29,26 +29,22 @@
 <body>
 <h1>Detecting AdBlock</h1>
 
-<p class="notblocked">AdBlock is not installed</p>
+<p class="notblocked">AdBlock is enabled.</p>
 
-<p class="blocked">AdBlock is installed</p>
+<p class="blocked">AdBlock is disabled.</p>
 
 <script>
 (function(){
-    var adblock = false;
-    var test = document.createElement('div');
-    test.innerHTML = 'x';
-    test.className = 'adsbox';
-    document.body.appendChild(test);
-    window.setTimeout(function(){
-
-    adblock = test.offsetHeight === 0;
-    console.log(adblock);
-    if (adblock) {
+  var test = document.createElement('div');
+  test.innerHTML = '&nbsp;';
+  test.className = 'adsbox';
+  document.body.appendChild(test);
+  window.setTimeout(function() {
+    if (test.offsetHeight === 0) {
       document.body.classList.add('adblock');
     }
     test.remove();
-    },200);
+  }, 100);
 })();
 </script>
 </body>
